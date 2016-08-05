@@ -3,7 +3,7 @@
 /* Extract from normalize.css by Nicolas Gallagher and Jonathan Neal git.io/normalize */
 html {
 -ms-text-size-adjust:100%;-webkit-text-size-adjust:100%
-  background: url(images/bg.jpg) no-repeat center center fixed; 
+  background: url(placeholder-img.jpg) no-repeat center center fixed; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -349,3 +349,21 @@ input[type=checkbox].w3-check:disabled+.w3-validate,input[type=radio].w3-radio:d
 .w3-border-pale-yellow,.w3-hover-border-pale-yellow:hover{border-color:#ffffd7!important}.w3-border-pale-blue,.w3-hover-border-pale-blue:hover{border-color:#e7ffff!important}
 .w3-opacity,.w3-hover-opacity:hover{opacity:0.60;filter:alpha(opacity=60)}
 .w3-text-shadow{text-shadow:1px 1px 0 #444}.w3-text-shadow-white{text-shadow:1px 1px 0 #ddd}
+
+/* Custom add-ons 
+.custom-delayed-tooltip {
+	position:relative;
+	display:none;
+	transition:0s;
+    transition-delay:1s; 
+}
+.custom-delayed-tooltip:hover .w3-text{
+	display:inline-block;
+}
+
+
+.exit-top{position:relative;-webkit-animation:animatetop 0.4s;animation:animatetop 0.4s}
+@-webkit-keyframes exittop{from{top:0;opacity:1} to{top:-300px;opacity:0}}
+@keyframes exittop{from{top:0;opacity:1} to{top:-300px;opacity:0}}
+
+*/

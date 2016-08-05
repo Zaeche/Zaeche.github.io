@@ -35,13 +35,22 @@
 			<img src="placeholder-img.jpg" alt="Lights" style="width:100%;height:1010px;">
 			
 			<div class="w3-display-topleft">
-				<a onclick="document.getElementById('alert-1').style.display='block'" class="w3-btn-floating-large w3-text-pale-blue w3-hover-blue w3-blue-grey w3-border w3-border-blue w3-hover-text-white w3-ripple w3-lobster" style="position:relative;left:10px;top:10px;">i</a>
+				<a id="notify" onclick="ExpandElement(this)" onmouseover="ExpandToolTip()" onmouseout="ContractToolTip()" 
+					class="w3-btn-floating-large w3-text-pale-blue w3-hover-blue w3-blue-grey w3-border w3-border-blue w3-hover-text-white w3-ripple w3-lobster" 
+					style="position:relative;left:10px;top:10px;"> i </a>
+					
+				<div id="tooltip" class="w3-text w3-tag w3-round w3-xlarge w3-blue-grey w3-row-padding w3-section w3-text-shadow w3-bold"
+							      style="display:none;position:absolute;top:0px;left:75px;"> Information </div>
 				
 				<!-- Alert 1 -->
-				<div id="alert-1" class="w3-modal w3-card-8 w3-section w3-hover-blue w3-blue-grey w3-animate-left w3-row-padding w3-text-shadow w3-bold">
-					<span onclick="this.parentElement.style.display='none'" class="w3-closebtn  w3-hover-text-red">&times;</span>
-					<h3>Information</h3>
-					<p> 28/07/2016: Site under construction. Reviewed and revised the inital design, simplifying it.</p>
+				<div id="alert-1" class="w3-modal w3-card-24 w3-section w3-hover-blue w3-blue-grey w3-animate-left w3-row-padding w3-text-shadow w3-bold" style="max-width:700px;">
+					<span onclick="document.getElementById('alert-1').style.display='none'" class="w3-closebtn  w3-hover-text-red">&times;</span>
+					<p> 28/07/2016: Beginning site construction. Reviewed and revised the inital design, simplifying it.</p>
+				</div>
+				
+				<div id="alert-2" class="w3-modal w3-card-24 w3-section w3-hover-blue w3-blue-grey w3-animate-left w3-row-padding w3-text-shadow w3-bold" style="max-width:700px;">
+					<span onclick="document.getElementById('alert-2').style.display='none'" class="w3-closebtn  w3-hover-text-red">&times;</span>
+					<p> 01/08/2016: Reviewing which web technologies I want to be using and are best suited for the design I have in mind.</p>
 				</div>
 			</div>
 			
@@ -129,21 +138,94 @@
 		  </div>
 		 </div>
 		</div>
+	
+		<style>
+			#tooltip{
+				-webkit-transform: perspective(350px) rotateX(-90deg);
+				transform: perspective(350px) rotateX(-90deg);
+				-webkit-transform-origin: 0% 0%;
+				transform-origin: 0% 0%;
+				animation: flipperUp 0.75s;
+				animation-fill-mode: forwards;
+				-webkit-animation: flipperUp 0.75s;
+				-webkit-animation-fill-mode: forwards;
+			}
+			
+			#tooltip.flipped
+			{
+				animation: flipper 0.75s;
+				animation-fill-mode: forwards;
+				-webkit-animation: flipper 0.75s;
+				-webkit-animation-fill-mode: forwards;
+			}
+			
+			@keyframes flipper
+			{
+				0% { transform: perspective(350px) rotateY(-90deg); }
+				33%	{ transform: perspective(350px) rotateY(0deg); }
+				50% { transform: perspective(200px) rotateY(7.5deg); }
+				66% { transform: perspective(275px) rotateY(-5deg); }
+				90% { transform: perspective(350px) rotateY(2.5deg); }
+				100% { transform: perspective(350px) rotateY(0deg); }
+			}
+
+			@-webkit-keyframes flipper
+			{
+				0% { -webkit-transform: perspective(350px) rotateY(-90deg); }
+				33% { -webkit-transform: perspective(350px) rotateY(0deg); }
+				50% { -webkit-transform: perspective(200px) rotateY(7.5deg); }
+				66% { -webkit-transform: perspective(275px) rotateY(-5deg); }
+				90% { -webkit-transform: perspective(350px) rotateY(2.5deg); }
+				100% { -webkit-transform: perspective(350px) rotateY(0deg); }
+			}
+
+			@keyframes flipperUp
+			{
+				0% { transform: perspective(350px) rotateY(0deg); }
+				45% { transform: perspective(350px) rotateY(-10deg); }
+				100% { transform: perspective(350px) rotateY(90deg); }
+			}
+
+			@-webkit-keyframes flipperUp
+			{
+				0% { -webkit-transform: perspective(350px) rotateY(0deg); }
+				45% { -webkit-transform: perspective(350px) rotateY(-10deg); }
+				100% { -webkit-transform: perspective(350px) rotateY(90deg); }
+			}	
+		</style>
 		
 		<script>
-			// Get the modal
-			var alarum = document.getElementById('contact');
+			var timeDelay = "400";
+			
+			// Get elemnnt
+			var alarum = document.getElementById('contact');			var tool = document.getElementById('tooltip');
+			var oneAlert = document.getElementById('alert-1');			var twoAlert = document.getElementById('alert-2');
 			
 			// When the user clicks anywhere outside of the modal, close it
 			window.onclick = function(event) {
 				if (event.target == alarum) {
-					alarum.style.display = "none";
+					alarum.style.display="none";
 				}
 			}
+			
+			function ExpandToolTip() {
+				tool.className += " flipped ";
+				tool.style.display = "inline-block";
+			};
+			
+			function ContractToolTip() {
+					tool.className = tool.className.replace( /(?:^|\s)flipped(?!\S)/g , '');
+			};
+			
+			
+			function ExpandElement() {
+				setTimeout(function() {oneAlert.style.display='block'}, timeDelay);
+				setTimeout(function() {twoAlert.style.display='block'}, timeDelay*2);
+			};
+			
 		</script>
 		
 		
-		<!-- ----------------------- Miscellaneous Stuff ----------------- -->
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
 
