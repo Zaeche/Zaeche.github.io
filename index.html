@@ -54,6 +54,12 @@
 					<span onclick="document.getElementById('alert-2').style.display='none'" class="w3-closebtn  w3-hover-text-red">&times;</span>
 					<p> 01/08/2016: Reviewing which web technologies I want to be using and are best suited for the design I have in mind. Toyed with some CSS animations. </p>
 				</div>
+				
+				<!-- Alert 3 -->
+				<div id="alert-3" class="w3-modal w3-card-24 w3-section w3-hover-blue w3-blue-grey w3-animate-left w3-row-padding w3-text-shadow w3-bold" style="max-width:700px;">
+					<span onclick="document.getElementById('alert-3').style.display='none'" class="w3-closebtn  w3-hover-text-red">&times;</span>
+					<p> 14/08/2016: Deliberating over options for website design (explored single-app via ui-router versus the more 'classical' structure?)--decisions, decisions ...</p>
+				</div>
 			</div>
 			
 			
@@ -202,6 +208,7 @@
 			// Get elemnnt
 			var alarum = document.getElementById('contact');			var tool = document.getElementById('tooltip');
 			var oneAlert = document.getElementById('alert-1');			var twoAlert = document.getElementById('alert-2');
+			var threeAlert = document.getElementById('alert-3');
 			
 			// When the user clicks anywhere outside of the modal, close it
 			window.onclick = function(event) {
@@ -223,6 +230,7 @@
 			function ExpandElement() {
 				setTimeout(function() {oneAlert.style.display='block'}, timeDelay);
 				setTimeout(function() {twoAlert.style.display='block'}, timeDelay*2);
+				setTimeout(function() {threeAlert.style.display='block'}, timeDelay*3);
 			};
 			
 		</script>
